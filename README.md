@@ -66,3 +66,17 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+redux-observable testing
+
+Redux 
+https://juejin.im/post/5af25f7b518825673447043a
+https://github.com/dolphinlin/dailydrinks/tree/master/src/components/forms
+https://www.jianshu.com/p/d2615a7d725e
+https://react-redux.js.org/api/connect
+
+Google voice api application
+https://note.pcwu.net/2017/02/08/tts-api/
+http://programmermagazine.github.io/201309/htm/article2.html
+http://sevendollarstw.blogspot.com/2016/12/responsivevoicejs-google.html
+https://www.oxxostudio.tw/articles/201509/web-speech-api.html

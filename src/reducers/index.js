@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import hero from './hero'
+import productsReducer from './hero'
 import profile from './profile'
 
 const reducer = combineReducers({
-	hero,
+	productsReducer,
 	profile,
 })
 

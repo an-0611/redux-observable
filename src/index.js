@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+
 import './index.css';
 import App from './App';
-
-import { Provider } from 'react-redux'
-import { store } from './configureStore';
+import configureStore from './configureStore';
 
 import * as serviceWorker from './serviceWorker';
 
-console.log(store) // {dispatch: ƒ, subscribe: ƒ, getState: ƒ, replaceReducer: ƒ, Symbol(observable): ƒ}
 
 
+// console.log('store.getState(): ', store.getState()) // for ssr
+
+const client = {}
+const history = {}
+const preloadedState = window.INITIAL_STATE;
+const store = configureStore(client, history, preloadedState);
 // import { createStore } from 'redux'
-
-// console.log('provider: ', Provider);
-// console.log('create: ', createStore)
 
 ReactDOM.render(
     <Provider store={store} >

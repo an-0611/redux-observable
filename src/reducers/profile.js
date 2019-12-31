@@ -1,32 +1,42 @@
-import { createActions, handleActions, combineActions } from 'redux-actions';
+import { createActions, handleActions,
+  // combineActions
+} from 'redux-actions';
 
-export const { get_profile, update_profile, add_profile } = createActions({
+export const { getprofile, setprofile, addprofile } = createActions({
   GETPROFILE: (data = []) => ({ data }),
   SETPROFILE: (data = []) => ({ data }),
   ADDPROFILE: (data = []) => ({ data }),
-  // DECREMENT: (data = []) => ({ amount: -amount }),
 });
 
 const initialState = {
-  data: []
+  data: [],
+  aa: 123
 };
-const profileReducer = handleActions( // handleActions(reducerMap=處理多個動作, defaultState) 
+const profileReducer = handleActions( // handleActions(reducerMap, defaultState);
   { // combineActions = 合併多個action & actionCreator
-    GETPROFILE: (state) => {
-      var arr = [];
-      fetch('http://hahow-recruit.herokuapp.com/heroes')
-      .then(res => res.json())
-      .then((result) => {
-        arr = result;
-      });
-      return { ...state, data: arr };
+    // GETPROFILE: (state, action) => {
+    //   return {
+    //     data: state.data.concat(action.payload.data)
+    //   };
+    // },
+    GETPROFILE: (state, action) => ({
+      ...state, // 讓其他state 不被替換掉
+      // data: state.data.concat(action.payload.data)
+      data: [...action.payload.data]
+    }),
+    SETPROFILE: (state, action) => {
+      // var index = state.data.findIndex((item) => {
+      //   return item.id === action.payload.data.id;
+      // });
+      return {
+        ...state,
+        // data: state.data.splice(index, 1, action.payload.data)
+      };
     },
-    update_profile: (state, action) => ({
-      data: state.data.splice(state.data.indexOf(action.payload), 1, action.payload)
-    }),
-    add_profile: (state, action) => ({
-      data: state.data.concat(action.payload)
-    }),
+    ADDPROFILE: (state, action) => ({
+      ...state,
+      data: state.data.concat(action.payload.data)
+    })
   },
   initialState
 );

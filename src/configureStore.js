@@ -1,6 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 
-import thunk from 'redux-thunk'
+// import thunk from 'redux-thunk'
+
+import createSagaMiddleware from 'redux-saga'
+import { fetchHero } from './components/fetchHero';
 
 import reducers from './reducers'
 
@@ -12,17 +15,22 @@ export default function configureStore(client, history, initialState) {
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
     }) : compose;
 
-  const middlewares = [thunk];
+  // const middlewares = [thunk];
+  const sagaMiddleware = createSagaMiddleware();
 
   const store = createStore(
     reducers,
     initialState,
     /* preloadedState*/
     composeEnhancers(
-      applyMiddleware(...middlewares),
+      // applyMiddleware(...middlewares), // thunk
+      applyMiddleware(sagaMiddleware)
       // applyMiddleware(client.middleware()),
       // autoRehydrate(),
     ),
   );
+
+  sagaMiddleware.run(fetchHero);
+
   return store;
 }

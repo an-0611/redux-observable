@@ -1,19 +1,43 @@
-import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from '../actions/fetchHeroActions';
+// import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from '../actions/fetchHeroActions'; // normal type
+// redux-thunk start
+// import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from '../reducers/hero';
+// export function fetchHero() {
+//     return dispatch => {
+//         dispatch(fetchProductsPending());
+//         return fetch('http://hahow-recruit.herokuapp.com/heroes') // fetch('http://hahow-recruit.herokuapp.com/heroes/1/profile')
+//         .then(res => res.json())
+//         .then(res => {
+//             // if (res.error) { // if api have error prototype
+//             //     throw(res.error);
+//             // }
+//             dispatch(fetchProductsSuccess(res));
+//             // return res.products;
+//         })
+//         .catch(error => {
+//             dispatch(fetchProductsError(error));
+//         })
+//     }
+// }
+// redux-thunk end
 
-export default function fetchHero() {
-    return dispatch => {
-        dispatch(fetchProductsPending());
-        fetch('http://hahow-recruit.herokuapp.com/heroes') // fetch('http://hahow-recruit.herokuapp.com/heroes/1/profile')
-        .then(res => res.json())
-        .then(res => {
-            // if (res.error) { // if api have error prototype
-            //     throw(res.error);
-            // }
-            dispatch(fetchProductsSuccess(res));
-            // return res.products;
-        })
-        .catch(error => {
-            dispatch(fetchProductsError(error));
-        })
-    }
+// redux-saga start
+import { takeLatest, put, call } from 'redux-saga/effects';
+import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from '../reducers/hero';
+
+function * fetchUsers() {
+  try {
+    const heroes = yield call(() => fetch('http://hahow-recruit.herokuapp.com/heroes').then(resp => resp.json())); // here we describe our api-request as effect
+    yield put(fetchProductsSuccess(heroes)); // calling our action creator we create our fetchUsersSuccess-action object.
+    // The 'put()' helper instructs Redux-Saga to dispatch the action on our redux store
+  } catch (e) {
+    yield put(fetchProductsError(e));
+  }
 }
+
+export function * fetchHero() {
+  // Spawns the specified generator whenever an action of the type FETCH_USERS_START // flows through our middleware. Running sagas from previous FETCH_USERS_START-actions // are cancelled automatically
+  // yield takeLatest(actionTypes.FETCH_USERS_START, fetchUsers)
+  // yield takeLatest(fetchProductsPending, fetchUsers)
+  yield takeLatest('FETCH_PRODUCTS_PENDING', fetchUsers)
+}
+// redux-saga end

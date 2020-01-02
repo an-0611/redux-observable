@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import ReactLoading from 'react-loading';
 
-import fetchHero from './fetchHero';
+import { bindActionCreators } from 'redux';
+// import * as productAction from '../actions/fetchHeroActions';
+import * as productAction from '../reducers/hero';
+import { fetchHero } from './fetchHero'; // thunk action method to fetch data , contain 3 actions
 
 const mapStateToProps = state => ({
   products: state.productsReducer.products,
@@ -12,8 +15,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchHero: () => dispatch(fetchHero()),
+    // fetchHero: () => dispatch(fetchHero()),// thunk
     dispatch,
+    actions: bindActionCreators({ ...productAction }, dispatch),
   }
 }
 
@@ -25,17 +29,24 @@ class MainSection extends Component {
   }
 
   getData() {
-    const { fetchHero } = this.props;
-    fetchHero();
+    // const { fetchHero } = this.props;
+    // fetchHero(); // redux-thunk
+
+    this.props.dispatch({type: 'FETCH_PRODUCTS_PENDING', payload: {} }); // redux-saga
+
+    // 2020/1/2 // http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html
+    // line login popup window
+    // https://dotblogs.com.tw/shadow/2019/10/13/011033
+    // https://www.quackit.com/javascript/popup_windows.cfm
   }
 
   render() {
     const { products, pending } = this.props;
     const Loading = ({ type = 'spinningBubbles', color = '#fff' }) => (
-      <ReactLoading type={type} color={color} height={'50%'} width={'25%'} delay={2} />
-      // https://github.com/fakiolinho/react-loading
+      <ReactLoading type={type} color={color} height={'50%'} width={'25%'} delay={2} /> // https://github.com/fakiolinho/react-loading
     );
     console.log('products:', products);
+    // console.log('actions: ', this.props.actions)
     return (
       <div>
         <div>MainSection</div>
@@ -50,7 +61,7 @@ class MainSection extends Component {
             </div>
           ))
         }
-        
+        <button onClick={() => { this.props.actions.fetchProductsPending() }}>test</button>
         {/* <style jsx>{`
 					.card {
 						position: relative;

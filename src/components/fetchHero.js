@@ -24,13 +24,14 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from '../reducers/hero';
 
-function * fetchUsers() {
+function * fetchUsers() { // saga explain // https://pjchender.github.io/2018/12/22/redux-saga/
   try {
     const heroes = yield call(() => fetch('http://hahow-recruit.herokuapp.com/heroes').then(resp => resp.json())); // here we describe our api-request as effect
+    // call => 呼叫被給予的函式
     yield put(fetchProductsSuccess(heroes)); // calling our action creator we create our fetchUsersSuccess-action object.
     // The 'put()' helper instructs Redux-Saga to dispatch the action on our redux store
   } catch (e) {
-    yield put(fetchProductsError(e));
+    yield put(fetchProductsError(e)); // put => dispatch 一個 action 到 store 中
   }
 }
 

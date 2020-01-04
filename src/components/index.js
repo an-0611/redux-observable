@@ -38,6 +38,8 @@ class MainSection extends Component {
     // line login popup window
     // https://dotblogs.com.tw/shadow/2019/10/13/011033
     // https://www.quackit.com/javascript/popup_windows.cfm
+    // https://redux.js.org/introduction/three-principles/
+    // https://medium.com/@max80713/%E8%A9%B3%E8%A7%A3-redux-middleware-efd6a506357e
   }
 
   render() {

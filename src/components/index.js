@@ -76,6 +76,12 @@ class MainSection extends Component {
         {/* https://redux.js.org/introduction/three-principles/ */}
         {/* https://medium.com/enjoy-life-enjoy-coding/react-%E5%9C%A8-hooks-%E4%B8%AD%E4%BB%A5-usecontext-%E8%88%87-usereducer-%E5%AF%A6%E7%8F%BE-redux-3a8aa403d9e4 */}
         {/* https://medium.com/@nightspirit622/%E8%A9%B2%E4%B8%8D%E8%A9%B2%E7%94%A8context-api-%E4%BE%86%E5%8F%96%E4%BB%A3-redux-4d7395d5c8da */}
+        {/* https://progressbar.tw/courses/13?from=fb&fbclid=IwAR3WIOCF44Ol4AdORclr8qJbMp0JQBcgjcQwoQ44sLYTfjMbdknakx_o0d8 */}
+        {/* https://blog.patw.me/archives/1310/write-frontend-unit-tests-with-jest/ */}
+        {/* https://blog.techbridge.cc/2018/03/31/react-fiber-and-lifecycle-change/ */}
+        {/* https://overreacted.io/?fbclid=IwAR1KBP7HM2txy3VFsB866LjAjsxLlyL7OLwARCoNA-o7Bsg__DjfEKF8Sak */}
+        {/* https://www.niusnews.com/event/niussalon20200112?fbclid=IwAR01N0LpoUtaM5BzOtt4LI_tg5XRe9YK3nzJ4UMkWoJA6HVBZZBuhq6luNE */}
+        {/* https://medium.com/@xinhe998/2019-frontend-internship-interview-ba79d896ee37 */}
       </div>
     );
   }

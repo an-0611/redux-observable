@@ -82,6 +82,25 @@ class MainSection extends Component {
         {/* https://overreacted.io/?fbclid=IwAR1KBP7HM2txy3VFsB866LjAjsxLlyL7OLwARCoNA-o7Bsg__DjfEKF8Sak */}
         {/* https://www.niusnews.com/event/niussalon20200112?fbclid=IwAR01N0LpoUtaM5BzOtt4LI_tg5XRe9YK3nzJ4UMkWoJA6HVBZZBuhq6luNE */}
         {/* https://medium.com/@xinhe998/2019-frontend-internship-interview-ba79d896ee37 */}
+        {/* https://fe-driver.github.io/vue-beauty/#/components/rate */}
+        {/* Inside look at modern web browser (part 1)
+        https://tinyurl.com/y957ow8c
+        Inside look at modern web browser (part 2)
+        https://tinyurl.com/y3jd2dzh
+        Inside look at modern web browser (part 3)
+        https://tinyurl.com/y42fjacn
+        Inside look at modern web browser (part 4)
+        https://tinyurl.com/ybscss6q
+        跨來源資源共用（CORS）
+        https://tinyurl.com/yyjbz72r
+        循序漸進理解 HTTP Cache 機制
+        https://tinyurl.com/y3aj5q4z
+        我知道你懂 hoisting，可是你了解到多深？
+        https://tinyurl.com/y2eqzebx
+        彻底搞懂HTTPS的加密机制
+        https://tinyurl.com/y3u4ksam
+        浏览器的工作原理：新式网络浏览器幕后揭秘
+        https://tinyurl.com/y2ykkgqx */}
       </div>
     );
   }

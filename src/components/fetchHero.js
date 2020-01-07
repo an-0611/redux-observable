@@ -22,7 +22,9 @@
 
 // redux-saga start
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from '../reducers/hero';
+import {
+  // fetchProductsPending,
+  fetchProductsSuccess, fetchProductsError } from '../reducers/hero';
 
 function * fetchUsers() { // saga explain // https://pjchender.github.io/2018/12/22/redux-saga/
   try {

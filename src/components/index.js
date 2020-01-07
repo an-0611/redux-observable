@@ -6,7 +6,23 @@ import ReactLoading from 'react-loading';
 import { bindActionCreators } from 'redux';
 // import * as productAction from '../actions/fetchHeroActions';
 import * as productAction from '../reducers/hero';
-import { fetchHero } from './fetchHero'; // thunk action method to fetch data , contain 3 actions
+// import { fetchHero } from './fetchHero'; // thunk action method to fetch data , contain 3 actions
+
+import styled from "styled-components";
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
+const Container = styled.div`
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 8px;
+`;
+
+const Item = styled.div`
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-bottom: 8px;
+`;
 
 const mapStateToProps = state => ({
   products: state.productsReducer.products,
@@ -24,7 +40,22 @@ const mapDispatchToProps = dispatch => {
 class MainSection extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+        todos: [
+            {
+                id: '1',
+                text: "Learn React"
+            },
+            {
+                id: '2',
+                text: "Learn Redux"
+            },
+            {
+                id: '3',
+                text: "Watch TV"
+            }
+        ]
+    };
     this.getData = this.getData.bind(this);
   }
 
@@ -101,6 +132,47 @@ class MainSection extends Component {
         https://tinyurl.com/y3u4ksam
         浏览器的工作原理：新式网络浏览器幕后揭秘
         https://tinyurl.com/y2ykkgqx */}
+        
+
+
+        <DragDropContext
+            onDragEnd={result => {
+                console.log(result);
+                const { source, destination, draggableId } = result;
+                if (!destination) return;
+
+                let arr = Array.from(this.state.todos);
+                console.log(arr);
+                const [remove] = arr.splice(source.index, 1);
+                arr.splice(destination.index, 0, remove);
+                this.setState({
+                    todos: arr
+                });
+            }}
+        >
+            <Droppable droppableId="d12--312321321">
+                {provided => (
+                    <Container ref={provided.innerRef} {...provided.droppableProps} style={{ border: '1px solid #ddd', borderRadius: '3px', padding: '8px' }}>
+                        {this.state.todos.map((t, i) => (
+                            <Draggable draggableId={t.id} index={i}>
+                                {p => (
+                                    <Item ref={p.innerRef}
+                                        {...p.draggableProps}
+                                        {...p.dragHandleProps}
+                                        key={t.id}
+                                    >
+                                        {t.text}
+                                    </Item>
+                                )}
+                            </Draggable>
+                        ))}
+                    </Container>
+                )}
+            </Droppable>
+        </DragDropContext>
+
+
+
       </div>
     );
   }

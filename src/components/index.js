@@ -134,7 +134,6 @@ class MainSection extends Component {
         https://tinyurl.com/y2ykkgqx */}
         
 
-
         <DragDropContext
             onDragEnd={result => {
                 console.log(result);
@@ -171,8 +170,17 @@ class MainSection extends Component {
             </Droppable>
         </DragDropContext>
 
+    {/* https://react-beautiful-dnd.netlify.com/?path=/story/board--simple */}
+    {/* https://codesandbox.io/s/9z7qwmmr7r */}
+    {/* https://codesandbox.io/s/y31owyopwv?from-embed */}
 
-
+    {/* https://blog.techbridge.cc/2018/06/27/advanced-react-component-patterns-note/ */}
+    {/* https://blog.techbridge.cc/2018/07/21/advanced-react-component-patterns-note-II/ */}
+    {/* https://www.niusnews.com/event */}
+    {/* https://medium.com/@as790726/%E5%A6%82%E4%BD%95%E7%B5%84%E7%B9%94%E4%BD%A0%E7%9A%84-react-redux-%E7%9A%84%E6%AA%94%E6%A1%88%E6%9E%B6%E6%A7%8B-e000a1afdd1 */}
+    {/* https://medium.com/@max80713/%E8%A9%B3%E8%A7%A3-redux-middleware-efd6a506357e */}
+    {/* https://medium.com/hulis-blog/english-174bd9b7c0ce */}
+    {/* https://github.com/nicehorse06/frontend-practice-course */}
       </div>
     );
   }

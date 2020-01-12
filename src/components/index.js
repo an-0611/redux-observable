@@ -184,6 +184,9 @@ class MainSection extends Component {
     {/* https://jerryc8080.gitbooks.io/understand-tcp-and-udp/chapter2.html */}
     {/* https://github.com/goodjack/developer-roadmap-chinese#%E5%89%8D%E7%AB%AF-frontend-%E8%B7%AF%E7%B7%9A%E5%9C%96 */}
     {/* https://free.com.tw/checklist-design/?utm_content=buffer6fe5f&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer&fbclid=IwAR3H9bBuZhOMJHMgoDLz8Sben_t8tilbw6-s4KbYxwwsN4-D8i0TzhQ6oq8 */}
+    {/* https://dribbble.com/shots/6803035-TimeNote-Login?ref=checklist.design */}
+    {/* https://www.checklist.design/pages/onboarding */}
+    {/* https://blog.techbridge.cc/2017/12/08/rxjs/ */}
       </div>
     );
   }

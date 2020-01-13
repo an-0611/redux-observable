@@ -37,7 +37,7 @@
 // }
 // normal end
 
-// redux-thunk + redux-actions start
+// redux-thunk || redux-saga + redux-actions start
 // https://sandstorm.de/de/blog/post/async-redux-middleware-comparison.html !!! 3 middleware compoare (thunk saga observable)
 // https://juejin.im/post/5af25f7b518825673447043a
 // https://juejin.im/post/5b41641ef265da0f8202126d
@@ -77,7 +77,7 @@ const productsReducer = handleActions(
     }),
     
   },
-  initialState
+  initialState,
 );
 export default productsReducer;
 // redux-thunk + redux-actions end

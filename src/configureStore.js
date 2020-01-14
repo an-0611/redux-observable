@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 
 import createSagaMiddleware from 'redux-saga'
 import { fetchHero } from './components/fetchHero';
+import { fetchHeroDetail } from './components/fetchHeroDetail';
 
 import reducers from './reducers'
 
@@ -31,6 +32,7 @@ export default function configureStore(client, history, initialState) {
   );
 
   sagaMiddleware.run(fetchHero);
+  sagaMiddleware.run(fetchHeroDetail);
 
   return store;
 }

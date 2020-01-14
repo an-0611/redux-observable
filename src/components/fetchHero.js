@@ -22,8 +22,9 @@
 
 // redux-saga start
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { FETCH_PRODUCTS_PENDING } from '../actions/fetchHeroActions';
+// import { FETCH_PRODUCTS_PENDING } from '../actions/fetchHeroActions';
 import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from '../reducers/hero';
+
 
 function * fetchUsers() { // saga explain // https://pjchender.github.io/2018/12/22/redux-saga/
   try {
@@ -36,7 +37,7 @@ function * fetchUsers() { // saga explain // https://pjchender.github.io/2018/12
   }
 }
 
-export function * fetchHero() {
+export function * fetchHero() { 
   // Spawns the specified generator whenever an action of the type FETCH_USERS_START // flows through our middleware. Running sagas from previous FETCH_USERS_START-actions // are cancelled automatically
   // yield takeLatest(actionTypes.FETCH_USERS_START, fetchUsers)
   yield takeLatest(fetchProductsPending, fetchUsers); // method 1

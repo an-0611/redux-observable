@@ -42,22 +42,39 @@
 // https://juejin.im/post/5af25f7b518825673447043a
 // https://juejin.im/post/5b41641ef265da0f8202126d
 import { createActions, handleActions } from 'redux-actions';
-import { FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR } from '../actions/fetchHeroActions';
+import { FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR } from '../actions/fetchHeroActions'; // fetchHero
+import { CLEAR_PRODUCTS_PENDING, CLEAR_PRODUCTS_SUCCESS, CLEAR_PRODUCTS_ERROR } from '../actions/clearHeroActions'; // clearHero
+import { FETCH_PRODUCTS_DETAIL_PENDING, FETCH_PRODUCTS_DETAIL_SUCCESS, FETCH_PRODUCTS_DETAIL_ERROR } from '../actions/fetchHeroDetailActions'; // fetchHeroDetail
 
-export const { fetchProductsPending, fetchProductsSuccess, fetchProductsError } = createActions({
+export const {
+  fetchProductsPending, fetchProductsSuccess, fetchProductsError,
+  clearProductsPending, clearProductsSuccess, clearProductsError,
+  fetchProductsDetailPending, fetchProductsDetailSuccess, fetchProductsDetailError,
+} = createActions({
   FETCH_PRODUCTS_PENDING: () => {},
-  FETCH_PRODUCTS_SUCCESS: (data) => ({ data }),
-  FETCH_PRODUCTS_ERROR: (error) => ({ error })
+  FETCH_PRODUCTS_SUCCESS: (data) => ({ data }), // var a = FETCH_PRODUCTS_SUCCESS(123) // a = { data:123 }
+  FETCH_PRODUCTS_ERROR: (error) => ({ error }),
+
+  CLEAR_PRODUCTS_PENDING: () => {},
+  CLEAR_PRODUCTS_SUCCESS: () => {},
+  CLEAR_PRODUCTS_ERROR: (error) => ({ error }),
+
+  FETCH_PRODUCTS_DETAIL_PENDING: () => {},
+  FETCH_PRODUCTS_DETAIL_SUCCESS: (data) => ({ data }),
+  FETCH_PRODUCTS_DETAIL_ERROR: (error) => ({ error }),
 });
 
 const initialState = {
   pending: false,
   products: [],
-  error: null
+  error: null,
+
+  productsDetail: [],
+  detailPending: false,
 }
 
 const productsReducer = handleActions(
-  {
+  { // fetchHero
     // [FETCH_PRODUCTS_PENDING]: (state, action) => Object.assign({}, state, { // another wording
     //   pending: true
     // }),
@@ -73,7 +90,40 @@ const productsReducer = handleActions(
     [FETCH_PRODUCTS_ERROR]: (state, { payload: { error }} ) => ({
       ...state,
       pending: false,
-      error: error // action.error
+      error: error // action.payload.error
+    }),
+
+    // clearHero
+    [CLEAR_PRODUCTS_PENDING]: (state) => ({
+      ...state,
+      pending: true
+    }),
+    [CLEAR_PRODUCTS_SUCCESS]: (state) => ({
+      ...state,
+      pending: false,
+      products: []
+    }),
+    [CLEAR_PRODUCTS_ERROR]: (state, { payload: { error }} ) => ({
+      ...state,
+      pending: false,
+      error: error
+    }),
+
+    // fetchHeroDetail
+    [FETCH_PRODUCTS_DETAIL_PENDING]: (state) => ({
+      ...state,
+      detailPending: true,
+    }),
+    [FETCH_PRODUCTS_DETAIL_SUCCESS]: (state, { payload: { data } } ) => ({
+      ...state,
+      detailPending: false,
+      productsDetail: [data],
+      // productsDetail: [...state.productsDetail, data],
+    }),
+    [FETCH_PRODUCTS_DETAIL_ERROR]: (state, { payload: { error }} ) => ({
+      ...state,
+      detailPending: false,
+      error: error,
     }),
     
   },

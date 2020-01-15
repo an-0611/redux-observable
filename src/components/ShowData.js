@@ -29,6 +29,10 @@ const HeroContainer = styled.div`
     width: 24%;
 `;
 
+// https://pjchender.blogspot.com/2018/11/react-react-router-dynamic-breadcrumb.html
+// https://chentsulin.github.io/redux/docs/basics/UsageWithReact.html
+// https://github.com/brickspert/blog/issues/3
+
 export default function ShowData(props) {
     const { pending, products, getDetail, productsDetail, heroId, detailPending } = props;
     console.log(productsDetail, heroId)
